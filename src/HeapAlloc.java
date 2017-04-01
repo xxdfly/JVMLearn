@@ -1,29 +1,27 @@
 /**
  * Created by wb-xxd249566 on 2017/4/1.
+ * -Xmx20m -Xms5m -XX:+PrintCommandLineFlags -XX:+PrintGCDetails -XX:+UseSerialGC
  */
 public class HeapAlloc {
+
     public static void main(String[] args){
-        log("Max Memory="+Runtime.getRuntime().maxMemory()/1024/1024+"M");
-        log("Free Memory="+Runtime.getRuntime().freeMemory()/1024/1024+"M");
-        log("Total Memory="+Runtime.getRuntime().totalMemory()/1024/1024+"M");
-
-        byte[] b = new byte[1*1024*1024];
-        log("Alloc 1M Space");
-
-        log("Max Memory="+Runtime.getRuntime().maxMemory()/1024/1024+"M");
-        log("Free Memory="+Runtime.getRuntime().freeMemory()/1024/1024+"M");
-        log("Total Memory="+Runtime.getRuntime().totalMemory()/1024/1024+"M");
-
-        b = new byte[4*1024*1024];
-        log("Alloc 4M Space");
-
-        log("Max Memory="+Runtime.getRuntime().maxMemory()/1024/1024+"M");
-        log("Free Memory="+Runtime.getRuntime().freeMemory()/1024/1024+"M");
-        log("Total Memory="+Runtime.getRuntime().totalMemory()/1024/1024+"M");
+        printMemoryStatus();
+        alloc(1);
+        printMemoryStatus();
+        alloc(4);
+        printMemoryStatus();
 
     }
 
-    public static void log(String str){
-        System.out.println(str);
+    public static void printMemoryStatus(){
+        System.out.println("Max Memory="+Runtime.getRuntime().maxMemory()+"bytes");
+        System.out.println("Free Memory="+Runtime.getRuntime().freeMemory()+"bytes");
+        System.out.println("Total Memory="+Runtime.getRuntime().totalMemory()+"bytes");
+    }
+
+    public static void alloc(int size){
+        byte[] b = new byte[size*1024*1024];
+        System.out.println("Alloc "+size+"M Space");
+        System.out.println("=========================================================================");
     }
 }
