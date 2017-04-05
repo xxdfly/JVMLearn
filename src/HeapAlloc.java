@@ -10,7 +10,6 @@ public class HeapAlloc {
         printMemoryStatus();
         alloc(4);
         printMemoryStatus();
-
     }
 
     public static void printMemoryStatus(){
@@ -22,6 +21,6 @@ public class HeapAlloc {
     public static void alloc(int size){
         byte[] b = new byte[size*1024*1024];
         System.out.println("Alloc "+size+"M Space");
-        System.out.println("=========================================================================");
+        System.out.println("=========================================================");
     }
 }
